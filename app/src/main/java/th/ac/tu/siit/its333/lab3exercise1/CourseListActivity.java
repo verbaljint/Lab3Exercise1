@@ -1,17 +1,32 @@
 package th.ac.tu.siit.its333.lab3exercise1;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class CourseListActivity extends ActionBarActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list);
+        TextView tvList = (TextView)findViewById(R.id.tvList);
+        Intent i =getIntent();
+        String[] input = i.getStringArrayExtra("fromMA");
+
+        String output = "List of courses\n";
+
+        for(int index =0;index<input.length;index++){
+            output = output + input[index] + "\n";
+        }
+
+        tvList.setText(output);
+
     }
 
 
